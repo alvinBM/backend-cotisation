@@ -1,30 +1,23 @@
 const express = require("express");
+const abonnes = require("./controllers/abonnes");
+const bodyParser = require("body-parser");
 
 const app = express();
 
-app.get("/abonnes", (req, res, next) => {
-
-    let abonnes = [
-        {
-            _id : 1,
-            nom : "Gloire",
-            postnom : "Musavuli",
-            age : 30,
-            sexe : "M"
-        },
-        {
-            _id : 2,
-            nom : "Grace",
-            postnom : "AOCI",
-            age : 12,
-            sexe : "M"
-        }
-    ]
-
-    res.status(202).json(abonnes);
+/** Set response header to allow same parameters */
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    next();
 });
 
+/** Set body parser pour gerer les body envoyé par les requetes */
+app.use(bodyParser.urlencoded());
 
+app.get("/abonnes", abonnes.getAbonnes);
+
+app.post("/abonnes", abonnes.addAbonne);
 
 
 module.exports = app;
