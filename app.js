@@ -36,5 +36,11 @@ app.get("/operations", operations.getOperations);
 
 app.post("/operations", operations.addOperation);
 
+app.get("/categories", categories.categoryAbonne);
+
+app.get("/categories", categories.categoryCompte);
+
+app.get("/categories", categories.categoryOperation);
+
 
 module.exports = app;
