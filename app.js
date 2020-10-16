@@ -1,5 +1,6 @@
 const express = require("express");
 const abonnes = require("./controllers/abonnes");
+
 const operations = require("./controllers/operations");
 const comptes = require("./controllers/comptes");
 const bodyParser = require("body-parser");
@@ -32,17 +33,20 @@ app.get("/abonnes", abonnes.getAbonnes);
 app.get("/abonnes/:telephone", abonnes.getAbonne);
 
 app.post("/abonnes", abonnes.addAbonne);
-app.get("/comptes",comptes.getComptes);
 
-app.get("/operations", operations.getOperations);
+// app.post("/operations", operations.addOperation);
 
-app.post("/operations", operations.addOperation);
+// app.get("/comptes",comptes.getComptes);
 
-app.get("/categories", categories.categoryAbonne);
+// app.get("/operations", operations.getOperations);
 
-app.get("/categories", categories.categoryCompte);
+// app.post("/operations", operations.addOperation);
 
-app.get("/categories", categories.categoryOperation);
+// app.get("/categories", categories.categoryAbonne);
+
+// app.get("/categories", categories.categoryCompte);
+
+// app.get("/categories", categories.categoryOperation);
 
 
 module.exports = app;
