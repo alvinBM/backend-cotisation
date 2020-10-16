@@ -1,6 +1,7 @@
 const express = require("express");
 const abonnes = require("./controllers/abonnes");
 const operations = require("./controllers/operations");
+const comptes = require("./controllers/comptes");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded());
 app.get("/abonnes", abonnes.getAbonnes);
 
 app.post("/abonnes", abonnes.addAbonne);
+app.get("/comptes",comptes.getComptes);
 
 app.get("/operations", operations.getOperations);
 
