@@ -1,5 +1,6 @@
 const express = require("express");
 const abonnes = require("./controllers/abonnes");
+const operations = require("./controllers/operations");
 const comptes = require("./controllers/comptes");
 const bodyParser = require("body-parser");
 
@@ -20,6 +21,10 @@ app.get("/abonnes", abonnes.getAbonnes);
 
 app.post("/abonnes", abonnes.addAbonne);
 app.get("/comptes",comptes.getComptes);
+
+app.get("/operations", operations.getOperations);
+
+app.post("/operations", operations.addOperation);
 
 
 module.exports = app;
