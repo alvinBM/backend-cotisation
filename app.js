@@ -1,5 +1,7 @@
 const express = require("express");
 const abonnes = require("./controllers/abonnes");
+const operations = require("./controllers/operations");
+const comptes = require("./controllers/comptes");
 const bodyParser = require("body-parser");
 import mongoose from "mongoose";
 
@@ -28,6 +30,11 @@ app.get("/abonnes", abonnes.getAbonnes);
 app.get("/abonnes/:telephone", abonnes.getAbonne);
 
 app.post("/abonnes", abonnes.addAbonne);
+app.get("/comptes",comptes.getComptes);
+
+app.get("/operations", operations.getOperations);
+
+app.post("/operations", operations.addOperation);
 
 
 module.exports = app;
