@@ -24,7 +24,7 @@ exports.addCompte = (req, res, next) => {
 
     let response = {
         status : 201,
-        message : "Abonné ajouté avec succès"
+        message : "Compte ajouté avec succès"
     }
 
     res.status(201).json(response);
