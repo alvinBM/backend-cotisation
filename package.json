@@ -1,0 +1,21 @@
+{
+  "name": "backend-cotisation",
+  "version": "1.0.0",
+  "description": "Application de gestion de cotisation des membres d'une organisation",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "Mongoose",
+    "Sequelize"
+  ],
+  "author": "tech2-GI-Ulpgl",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
