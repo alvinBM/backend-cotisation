@@ -3,7 +3,9 @@ const abonnes = require("./controllers/abonnes");
 const operations = require("./controllers/operations");
 const comptes = require("./controllers/comptes");
 const bodyParser = require("body-parser");
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
+const mongoose= require("mongoose");
+
 
 const app = express();
 
