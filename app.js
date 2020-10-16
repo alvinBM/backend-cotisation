@@ -16,7 +16,6 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded());
 
 app.get("/abonnes", abonnes.getAbonnes);
-
 app.post("/abonnes", abonnes.addAbonne);
 
 
