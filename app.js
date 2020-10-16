@@ -32,17 +32,26 @@ app.get("/abonnes", abonnes.getAbonnes);
 app.get("/abonnes/:telephone", abonnes.getAbonne);
 
 app.post("/abonnes", abonnes.addAbonne);
-app.get("/comptes",comptes.getComptes);
+// app.get("/comptes",comptes.getComptes);
 
+// app.get("/operations", operations.getOperations);
+
+// app.post("/operations", operations.addOperation);
+
+// app.get("/categories", categories.categoryAbonne);
+
+// app.get("/categories", categories.categoryCompte);
+
+// app.get("/categories", categories.categoryOperation);
 app.get("/operations", operations.getOperations);
+
+app.get("/operations/:montantOperation", operations.getOperation);
 
 app.post("/operations", operations.addOperation);
 
-app.get("/categories", categories.categoryAbonne);
+app.delete("/operations/:montantOperation", operations.deleteOperation);//delete one
 
-app.get("/categories", categories.categoryCompte);
-
-app.get("/categories", categories.categoryOperation);
+app.put("/operations/:montantOperation", operations.updateOperation);
 
 
 module.exports = app;
