@@ -28,9 +28,12 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded());
 
 app.get("/abonnes", abonnes.getAbonnes);
+<<<<<<< HEAD
+=======
 
 app.get("/abonnes/:telephone", abonnes.getAbonne);
 
+>>>>>>> 94e05fdbc4ba4c5a89f298fe3c481c2295ab0409
 app.post("/abonnes", abonnes.addAbonne);
 app.get("/comptes",comptes.getComptes);
 
