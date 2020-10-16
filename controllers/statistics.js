@@ -18,9 +18,9 @@ exports.userCount = (req, res, next) => {
         }
     ]
 
-   userCount = abonnes.length;
+    let count = abonnes.length;
 
-    res.status(202).json(this.userCount);
+    res.status(202).json(count);
 };
 
 
