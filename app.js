@@ -1,6 +1,6 @@
 const express = require("express");
 const abonnes = require("./controllers/abonnes");
-const abonnes = require("./controllers/comptes");
+const comptes = require("./controllers/comptes");
 const bodyParser = require("body-parser");
 
 const app = express();
