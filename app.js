@@ -19,5 +19,11 @@ app.get("/abonnes", abonnes.getAbonnes);
 
 app.post("/abonnes", abonnes.addAbonne);
 
+app.get("/categories", categories.categoryAbonne);
+
+app.get("/categories", categories.categoryCompte);
+
+app.get("/categories", categories.categoryOperation);
+
 
 module.exports = app;
