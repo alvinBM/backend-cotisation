@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+// import mongoose from "mongoose";
 
 const abonneSchema = mongoose.Schema({
     nom : {type : String, required : true},
