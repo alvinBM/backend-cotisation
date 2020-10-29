@@ -44,11 +44,14 @@ app.post("/abonnes", abonnes.addAbonne);
 
 app.get("/operations", operations.getOperations);
 
-app.get("/statistics/amountDays", statistics.amountDays);
+app.get("/statistics/amountDays", statistics.getCountAndAmountDays);
 
 
 // app.post("/statistics/countOperationByDay", statistics.countOperationByDay);
-app.get("/statistics/getDailyCotisation", statistics.getDailyCotisation);
+
+
+// app.get("/statistics/getDailyCotisation", statistics.getDailyCotisation);
+app.post("/statistics/getDailyCotisation", statistics.getDailyCotisation);
 
 // app.get("/operations/:montantOperation", operations.getOperation);
 // app.get("/operations", operations.getTest);

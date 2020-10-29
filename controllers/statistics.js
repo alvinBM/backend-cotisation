@@ -7,48 +7,6 @@ const operations = require("../controllers/operations");
 const categories = require("../controllers/categories");
 
 
-var opss = () => {
-
-    let ops = []
-    Operation.find()
-        .then(operations => {
-           let data = operations;
-            ops = data
-                .filter(x => x.dateOperation)
-                .reduce((acc, curr) => {
-                    let item = acc.find(x => x.version == curr["dateOperation"]);
-                    if (!item) {
-                        item = { date: curr["dateOperation"], numOperation: {} }
-                        acc.push(item);
-                    }
-                    item.numOperation[curr.numOperation] = (item.numOperation[curr.numOperation] || 0) + curr.montantOperation
-                    return acc;
-                }, [])
-                .map(x => ({
-                    "Date": x.date,
-                    "Count": Object.keys(x.numOperation).length,
-                    "Amount": Object.values(x.numOperation).reduce((a, b) => a + b, 0)
-                }))
-            // console.log(result)
-
-            // response.message = "Montant par date";
-            // response.status = 200;
-            // response.data = result;
-            // res.status(200).json(response);
-            return ops
-        }).catch(error => {
-            // response.message = "Une erreur est survenue lors de la creation de l'operation"
-            // response.status = 400,
-            //     response.data = error
-            // res.status(400).json(response);
-            return []
-        })
-
-
-    return ops;
-}
-
-
 exports.userCount = (req, res, next) => {
 
     console.log("object");
@@ -76,51 +34,54 @@ exports.userCount = (req, res, next) => {
 
 exports.getDailyCotisation = (req, res, next) => {
 
+    let response = {
+        status: null,
+        message: "",
+        data: null
+    }
 
-    let data = [{
-        _id: "5f8999cf7680d605f052d5b9",
-        numOperation: '120',
-        dateOperation: '05/11/2020',
-        montantOperation: '545',
-        __v: 0
-    },
-    {
-        _id: "5f89b0db0640bb1d0c4a3363",
-        numOperation: '10',
-        dateOperation: '05/10/2020',
-        montantOperation: '20000',
-        __v: 0
-    },
-    { _id: "5f8aa7c64c66f42824954f58", __v: 0 }]
-
-    var ops = data
-        .filter(x => x.dateOperation)
-        .reduce((acc, curr) => {
-            let item = acc.find(x => x.version == curr["dateOperation"]);
-            if (!item) {
-                item = { date: curr["dateOperation"], numOperation: {} }
-                acc.push(item);
-            }
-            item.numOperation[curr.numOperation] = (item.numOperation[curr.numOperation] || 0) + curr.montantOperation
-            return acc;
-        }, [])
-        .map(x => ({
-            "Date": x.date,
-            "Count": Object.keys(x.numOperation).length,
-            "Amount": Object.values(x.numOperation).reduce((a, b) => a + b, 0)
-        }))
-
-    console.log('rest = ==== ', opss());
-
+    Operation.find()
+        .then(operations => {
+            let datas = operations;
+            // console.log(" data = ", data);
+            // console.log("ben", data)
+            let date = req.body.date;
+            console.log("date = ", date)
+            let ops = datas
+                .filter(x => (x.dateOperation == date))
+                .reduce((acc, curr) => {
+                    let item = acc.find(x => x.version == curr["dateOperation"]);
+                    if (!item) {
+                        item = { date: curr["dateOperation"], numOperation: {} }
+                        acc.push(item);
+                    }
+                    item.numOperation[curr.numOperation] = (item.numOperation[curr.numOperation] || 0) + curr.montantOperation
+                    return acc;
+                }, [])
+                .map(x => ({
+                    "Date": x.date,
+                    "Count": Object.keys(x.numOperation).length,
+                    "Amount": Object.values(x.numOperation).reduce((a, b) => a + b, 0)
+                }))
+            response.message = "Montant par date";
+            response.status = 200;
+            response.data = ops;
+            res.status(200).json(response);
+        }).catch(error => {
+            response.message = "Une erreur est survenue"
+            response.status = 400,
+                response.data = error
+            res.status(400).json(response);
+        })
 
 
 
-    res.status(201).json({ "ops": ops });
+
 };
 
 
 
-exports.amountDays = (req, res, next) => {
+exports.getCountAndAmountDays = (req, res, next) => {
 
 
     let response = {
